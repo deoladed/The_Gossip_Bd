@@ -24,19 +24,9 @@ end
 	Comment.create(content: Faker::Lorem.paragraphs, user: User.all.sample, potin: Potin.all.sample)
 end
 
-10.times do
-	Like.create(user: User.all.sample, potin: Potin.all.sample)
-	Like.create(user: User.all.sample, comment: Comment.all.sample)
+20.times do
+	Like.create(user: User.all.sample, likeable: [Potin.all, Comment.all][rand(0..1)][rand(1..20)])
 end
-# # ou
-# potinoucomment = []
-# potinoucomment << Potin.all
-# potinoucomment << Comment.all
-# 20.times do
-# 	Like.create(user: User.all.sample, )
-
-
-
 
 1.times do
  pm = PrivateMessage.new
