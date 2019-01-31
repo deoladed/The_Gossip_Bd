@@ -22,10 +22,11 @@ ActiveRecord::Schema.define(version: 2019_01_31_134153) do
   create_table "comments", force: :cascade do |t|
     t.text "content"
     t.integer "user_id"
-    t.integer "potin_id"
+    t.string "commenteable_type"
+    t.integer "commenteable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["potin_id"], name: "index_comments_on_potin_id"
+    t.index ["commenteable_type", "commenteable_id"], name: "index_comments_on_commenteable_type_and_commenteable_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 

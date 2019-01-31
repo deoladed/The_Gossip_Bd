@@ -16,23 +16,31 @@ end
 	Tag.create(title: Faker::Hacker.adjective)
 end
 
+# Au moins un tag par potin
 Potin.all.each do |potin|
 	potin.tag << Tag.all.sample
 end
 
+## Quelques comment de potins
 20.times do 
-	Comment.create(content: Faker::Lorem.paragraphs, user: User.all.sample, potin: Potin.all.sample)
+	Comment.create(content: Faker::Lorem.paragraphs, user: User.all.sample, commenteable: Potin.all.sample)
 end
 
+## Puis quelques comment de comment, des bebes comment quoi
+20.times do 
+	Comment.create(content: Faker::Lorem.paragraphs, user: User.all.sample, commenteable: Comment.all.sample)
+end
+
+# Des likes polymorphics, comme ca on peut liker un article OU un comment, mais forcement un des deux.
 20.times do
 	Like.create(user: User.all.sample, likeable: [Potin.all, Comment.all][rand(0..1)][rand(1..20)])
 end
 
+# Et un petit MP, dans une boucle times pour en creer plus si besoin
 1.times do
  pm = PrivateMessage.new
- joris = User.all.sample
- alexis = User.all.sample
- pm.sender = joris
- pm.recipient = alexis
+ pm.sender = User.all.sample
+ pm.recipient = User.all.sample
  pm.save
 end
+
