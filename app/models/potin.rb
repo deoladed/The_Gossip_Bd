@@ -1,6 +1,7 @@
 class Potin < ApplicationRecord
   belongs_to :user
-  has_many :comment, as: :commenteable
-  has_many :like, as: :likeable
-  has_and_belongs_to_many :tag
+  has_many :comments, as: :commenteable
+  has_many :likes, as: :likeable
+  has_many :join_table_potin_tags
+  has_many :tags, through: :join_table_potin_tags
 end

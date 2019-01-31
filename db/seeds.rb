@@ -18,7 +18,7 @@ end
 
 # Au moins un tag par potin
 Potin.all.each do |potin|
-	potin.tag << Tag.all.sample
+	potin.tags << Tag.all.sample
 end
 
 ## Quelques comment de potins

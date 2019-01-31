@@ -1,3 +1,4 @@
 class Tag < ApplicationRecord
-	  has_and_belongs_to_many :potin
+	  has_many :join_table_potin_tags
+	  has_many :potins, through: :join_table_potin_tags
 end
