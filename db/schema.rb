@@ -31,12 +31,12 @@ ActiveRecord::Schema.define(version: 2019_01_31_220445) do
   end
 
   create_table "join_table_mp_users", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "recipient_id"
     t.integer "private_message_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["private_message_id"], name: "index_join_table_mp_users_on_private_message_id"
-    t.index ["user_id"], name: "index_join_table_mp_users_on_user_id"
+    t.index ["recipient_id"], name: "index_join_table_mp_users_on_recipient_id"
   end
 
   create_table "join_table_potin_tags", force: :cascade do |t|

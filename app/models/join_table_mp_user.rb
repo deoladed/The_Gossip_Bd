@@ -1,4 +1,4 @@
 class JoinTableMpUser < ApplicationRecord
-	belongs_to :user
+	belongs_to :recipient, class_name: 'User'
 	belongs_to :private_message
 end
