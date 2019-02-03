@@ -40,7 +40,9 @@ end
 1.times do
  pm = PrivateMessage.new
  pm.sender = User.all.sample
- pm.recipient = User.all.sample
+ pm.users << User.all.sample
+ pm.users << User.all.sample
+ pm.users << User.all.sample
  pm.save
 end
 

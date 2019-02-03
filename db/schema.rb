@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_31_213827) do
+ActiveRecord::Schema.define(version: 2019_01_31_220445) do
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(version: 2019_01_31_213827) do
     t.datetime "updated_at", null: false
     t.index ["commenteable_type", "commenteable_id"], name: "index_comments_on_commenteable_type_and_commenteable_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "join_table_mp_users", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "private_message_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["private_message_id"], name: "index_join_table_mp_users_on_private_message_id"
+    t.index ["user_id"], name: "index_join_table_mp_users_on_user_id"
   end
 
   create_table "join_table_potin_tags", force: :cascade do |t|
@@ -60,11 +69,9 @@ ActiveRecord::Schema.define(version: 2019_01_31_213827) do
   end
 
   create_table "private_messages", force: :cascade do |t|
-    t.integer "recipient_id"
     t.integer "sender_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["recipient_id"], name: "index_private_messages_on_recipient_id"
     t.index ["sender_id"], name: "index_private_messages_on_sender_id"
   end
 
